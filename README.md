@@ -3,6 +3,8 @@ This project is about implementing TD Prediction method on Frozen Lake environme
 
 The TD Prediction method focuses on updating the state values for every step. This project when implemented on your local machine and verified will prove that updating the state values alone is not enough to reach the goal. In the next project I will present the method that optimizes the value function and reaches the goal.
 
+The Unity Editor used for this project is 2022.3.47f1.
+
 # Special Mentions
 1. https://github.com/ivankunyankin/ml_agents_frozen_lake -- For the environment
 
