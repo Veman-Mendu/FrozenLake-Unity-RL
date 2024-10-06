@@ -6,7 +6,9 @@ This project is about implementing TD Prediction method on Frozen Lake environme
 The TD Prediction method focuses on updating the state values for every step. This project when implemented on your local machine and verified will prove that updating the state values alone is not enough to reach the goal. The code for TD Predictions is available at boxAgent.py
 
 **The observation of TD Prediction is**:
- The algorithm never reached the goal in the second half of the total episodes. 
+ The algorithm never reached the goal in the second half of the total episodes.
+
+ The algorithm is trained for 1000 episodes and the values of the states after training can be observed at state_values.csv. The code for running the agent with trained state values can be observed at statevalue_agent.py
 
  # TD Control
 
@@ -14,6 +16,8 @@ The TD Prediction method focuses on updating the state values for every step. Th
 
  **The observation of TD Control is**:
 The algorithm was able to learn the direction to go in order to reach the goal and was able to reach the goal around 60 % of the time in the second half of the total run. 
+
+The trained action values can be observed at action_values.csv. The code for running the agent with trained action values can be observed at actionvalue_agent.py
 
 The reason for mentioning **Second Half of the total run** is I have tried to implement the algorithms in a On-policy approach making the run move from complete random actions at the start of the game to complete algorithm based actions at the end of the game.
 
