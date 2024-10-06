@@ -1,6 +1,7 @@
 from peaceful_pie.unity_comms import UnityComms
 import random
 import numpy as np
+import csv
 
 uc = UnityComms(8080)
 
@@ -11,11 +12,15 @@ print(f'Message Recieved is : {mes}')
 
 #Let's start the actual code
 episodes = 1000
+games_won = 0
+gw_epn = []
+
 
 state_list = [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]
 state_value_dict = {}
 for i in state_list:
-    state_value_dict[i] = 0
+    state_value_dict[i] = random.random()
+    #state_value_dict[i] = 0
 
 #actionAlgo defines the action to be taken.
 def actionAlgo(episode, episodes, state, state_value_dict, state_x, state_y):
@@ -63,7 +68,7 @@ for episode in range(episodes):
     done = 0
 
     while (done == 0):
-        print(f"Episode {episode} begins now")
+        #print(f"Episode {episode} begins now")
 
         action = actionAlgo(episode, episodes, prev_state, state_value_dict, state_x, state_y)
         #action = int(input("Enter Action"))
@@ -89,6 +94,8 @@ for episode in range(episodes):
         #print(f'state is:{state}, reward is:{reward}, done is: {done}, targetPos is: {24}')
 
         if (reward == 1):
+            games_won += 1
+            gw_epn.append(episode)
             print(f"state values are : {state_value_dict}")
 
         if state in state_list:
@@ -102,5 +109,17 @@ for episode in range(episodes):
             state_x = x
             state_y = y
 
-    print(state_list)
-    print(state_value_dict)
+    print(f"Episodes {episode} is completed")
+print("game completed")
+
+
+print(f"no.of games won are : {games_won}")
+print(f"games won at episodes : {gw_epn}")
+
+filename = "state_values.csv"
+with open(filename, mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["State","Value"])
+    for key, value in state_value_dict.items():
+        writer.writerow([key, value])
+

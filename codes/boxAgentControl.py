@@ -1,5 +1,6 @@
 from peaceful_pie.unity_comms import UnityComms
 import random
+import csv
 
 uc = UnityComms(8080)
 
@@ -8,7 +9,7 @@ uc.sendTest(message="Hello Unity")
 mes = uc.recieveTest()
 print(f'Message Recieved is : {mes}')
 
-episodes = 10000
+episodes = 1000
 state_list = []
 action_list = [0,1,2,3]
 games_won = 0
@@ -100,3 +101,14 @@ for episode in range(episodes):
 
 print(f"no.of games won are : {games_won}")
 print(f"games won at episodes : {gw_epn}")
+
+filename = 'action_values.csv'
+max_length = 4
+
+with open(filename, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    header = ['State'] + [f'{i}' for i in range(max_length)]
+    writer.writerow(header)
+
+    for key, values in q_list.items():
+        writer.writerow([key] + values)
