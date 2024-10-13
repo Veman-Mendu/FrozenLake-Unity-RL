@@ -21,6 +21,8 @@ The trained action values can be observed at action_values.csv. The code for run
 
 The reason for mentioning **Second Half of the total run** is I have tried to implement the algorithms in a On-policy approach making the run move from complete random actions at the start of the game to complete algorithm based actions at the end of the game.
 
+The **SARSA** aglorithm is available at boxAgentSarsaTest.py. This algorithm doesnot perform random action for exploration. It just updates the q values of known actions. But, if the agent wins only ones. The agent will just keep performing the actions again and again. The code when ran on local computer will prove that point by winning atleast 800 games out of 1000 games.
+
 The Unity Editor used for this project is 2022.3.47f1.
 
 # Special Mentions
